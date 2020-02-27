@@ -1,0 +1,8 @@
+{
+  "src": {
+    "default": "./src/scss/**/*.scss"
+  },
+  "dist": {
+    "default": "./wwwroot/css/"
+  }
+}
