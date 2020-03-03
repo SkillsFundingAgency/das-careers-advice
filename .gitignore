@@ -275,3 +275,4 @@ src/Tools/PhantomJS/tools/phantomjs/ChangeLog
 
 # Development app settings
 *.Development.json
+/src/SFA.DAS.CareersAdvice/SFA.DAS.CareersAdvice.Web/wwwroot/govuk-assets

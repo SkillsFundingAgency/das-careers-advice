@@ -1,3 +1,20 @@
+$govuk-global-styles: true;
+$govuk-fonts-path: "../govuk-assets/fonts/";
+
+
 // GDS Design System
 @import "all";
 
+.govuk-heading-xl,
+.govuk-heading-l,
+.govuk-heading-m,
+.govuk-heading-s {
+    font-family: nobel,sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.govuk-body-m, .govuk-body, p {
+    font-family: nobel,sans-serif;
+    font-weight: 300;
+}
