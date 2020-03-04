@@ -11,7 +11,7 @@
         "serviceName": {
             "type": "string"
         },
-        "sharedResourceGroup": {
+        "sharedEnvResourceGroup": {
             "type": "string"
         },
         "sharedFrontEndAppServicePlanName": {
@@ -53,7 +53,7 @@
         {
             "apiVersion": "2017-05-10",
             "name": "ui-app-service-certificate",
-            "resourceGroup": "[parameters('sharedResourceGroup')]",
+            "resourceGroup": "[parameters('sharedEnvResourceGroup')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -70,9 +70,6 @@
                     },
                     "keyVaultResourceGroup": {
                         "value": "[parameters('sharedManagementResourceGroup')]"
-                    },
-                    "serverFarmId": {
-                        "value": "[resourceId(parameters('sharedResourceGroup'), 'Microsoft.Web/serverfarms', parameters('sharedFrontendAppServicePlanName'))]"
                     }
                 }
             }
@@ -115,7 +112,7 @@
                         "value": "[parameters('sharedFrontEndAppServicePlanName')]"
                     },
                     "appServicePlanResourceGroup": {
-                        "value": "[parameters('sharedResourceGroup')]"
+                        "value": "[parameters('sharedEnvResourceGroup')]"
                     },
                     "appServiceAppSettings": {
                         "value": [
