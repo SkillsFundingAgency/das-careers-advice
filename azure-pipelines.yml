@@ -1,0 +1,57 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - "*"
+
+pr: none
+
+variables:
+  buildConfiguration: "release"
+  buildPlatform: "anycpu"
+
+steps:
+- task: gittools.gitversion.gitversion-task.GitVersion@5
+  displayName: GitVersion
+  inputs:
+    updateAssemblyInfo: true
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: "src/**/*.csproj"
+    feedsToUse: config
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    projects: "src/**/*.csproj"
+    arguments: "--configuration $(buildConfiguration) --no-restore"
+
+- task: DotNetCoreCLI@2
+  displayName: Acceptance Tests
+  inputs:
+    command: test
+    projects: "**/*Tests.csproj"
+    arguments: "--configuration $(buildConfiguration) --no-build"
+
+- task: DotNetCoreCLI@2
+  displayName: "Publish UI"
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: "src/SFA.DAS.CareersAdvice/SFA.DAS.CareersAdvice.Web/SFA.DAS.CareersAdvice.Web.csproj"
+    arguments: "--configuration $(buildConfiguration) --output $(build.artifactstagingdirectory)/publish --no-restore --no-build"
+
+- task: CopyFiles@2
+  displayName: "Copy Files to: $(build.artifactstagingdirectory)"
+  inputs:
+    contents: |
+      azure/**
+    targetFolder: "$(build.artifactstagingdirectory)/publish"
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifact"
+  inputs:
+    pathtoPublish: "$(build.artifactstagingdirectory)/publish"
