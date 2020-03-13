@@ -1,0 +1,18 @@
+.app-header {
+    background: $blue-dark;
+    color: #ccc;
+}
+
+.app-header__logo {
+    height: 100px;
+}
+
+.app-header__logo-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.app-header__link {
+    display: inline-block;
+    height: 100%;
+}

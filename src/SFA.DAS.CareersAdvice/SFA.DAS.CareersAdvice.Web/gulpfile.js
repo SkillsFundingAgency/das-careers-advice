@@ -22,4 +22,4 @@ gulp.task('app-copy-assets', function() {
 });
 
 
-gulp.task('app',  gulp.series('app-compile-sass', 'app-watch-sass'));
+gulp.task('default',  gulp.series('app-compile-sass', 'app-watch-sass'));

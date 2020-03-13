@@ -17,6 +17,35 @@
         document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+    <header class="app-header" data-module="navigation">
+        <div class="govuk-width-container">
+            <div class="app-header__logo">
+                <a href="/" class="app-header__link">
+                    <img src="https://das-prd-frnt-end.azureedge.net/campaign/images/apprenticeships-logo.png" alt="Apprenticeships logo" class="app-header__logo-img" />
+                </a>
+            </div>
+            <a href="#navigation" class="app-nav__toggle">
+                <span class="app-nav__toggle-label" id="nav-label">Menu</span>
+                <span class="app-nav__toggle-icon"></span>
+            </a>
+        </div>
+        <nav id="navigation" class="app-nav">
+            <div class="govuk-width-container">
+                <ul class="app-nav__list">
+                    <li class="app-nav__list-item">
+                        <a class="app-nav__link" href="#">
+                            Link
+                        </a>
+                    </li>
+                    <li class="app-nav__list-item">
+                        <a class="app-nav__link" href="#">
+                            Link
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="govuk-width-container">
         <main class="govuk-main-wrapper " id="main-content" role="main">
             @RenderBody() 
